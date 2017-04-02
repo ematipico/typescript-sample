@@ -1,0 +1,39 @@
+{
+  "name": "typescript-sample",
+  "version": "1.0.0",
+  "description": "Sample of typescript with Redux, React and Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ematipico/typescript-sample.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "Redux",
+    "React",
+    "Webpack"
+  ],
+  "author": "Emanuele Stoppa",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ematipico/typescript-sample/issues"
+  },
+  "homepage": "https://github.com/ematipico/typescript-sample#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
+    "redux": "^3.6.0",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.2"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.2",
+    "source-map-loader": "^0.2.1",
+    "typescript": "^2.2.2"
+  }
+}
