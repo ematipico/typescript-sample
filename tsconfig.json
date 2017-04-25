@@ -2,21 +2,29 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "jsx": "react",
     "baseUrl": "./src",
+    "lib": [
+      "ES2016",
+      "DOM"
+    ],
     "paths": {
       "*": [
         "*"
       ]
-    }
+    },
+    "types": [
+      "node"
+     ]
   },
   "include": [
     "./src/**/*"
   ],
   "ignore": [
-    "webpack.config.js"
+    "webpack.config.js",
+    "postcss.config.js"
   ]
 }

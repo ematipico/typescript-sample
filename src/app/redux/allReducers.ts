@@ -1,7 +1,7 @@
-import home from 'app/home/homeReducer'
+import products from 'app/containers/products/productsReducer.ts'
 
 const allReducers = {
-  home
+  products
 }
 
 export default allReducers

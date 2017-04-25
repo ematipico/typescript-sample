@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux'
-import allReducers from './allReducers'
+import allReducers from 'app/redux/allReducers.ts'
 
 
-export default () => {
+export default function initStore(): Object {
   const store = createStore(combineReducers(allReducers))
 
   return store;
