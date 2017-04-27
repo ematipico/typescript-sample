@@ -1,7 +1,7 @@
 import { createStore, combineReducers, Store as ReduxStore, compose, applyMiddleware, GenericStoreEnhancer } from 'redux'
 import allReducers from './allReducers'
 import allSagas from './allSagas'
-import { State, Store } from 'interfaces'
+import { State, Store } from 'app/interfaces'
 import createSagaMiddleware from 'redux-saga'
 
 export default function configureStore () {

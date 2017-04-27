@@ -21,9 +21,7 @@ module.exports = {
     webpackHotMiddleware(bundler)
   ],
   files: [
-    '../js/**/*.js',
-    '../css/app.css',
-    '../**/*.html'
+    'src/index.html'
   ],
   online: false,
   ghostMode: true,

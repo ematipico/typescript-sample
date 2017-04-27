@@ -1,4 +1,4 @@
-import { AppAction } from 'interfaces'
+import { AppAction } from 'app/interfaces'
 
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
 export const STORE_PRODUCTS = 'STORE_PRODUCTS'

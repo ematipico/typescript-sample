@@ -1,9 +1,9 @@
 
 import { SagaIterator } from 'redux-saga'
 import { take, fork, put, call } from 'redux-saga/effects'
-import { REQUEST_PRODUCTS, storeProducts } from 'containers/products/productsActions'
-import { AppAction } from 'interfaces'
-import api from 'api'
+import { REQUEST_PRODUCTS, storeProducts } from 'app/containers/products/productsActions'
+import { AppAction } from 'app/interfaces'
+import api from 'app/api'
 
 export function* watchRequestProducts (): SagaIterator {
   const action = yield take(REQUEST_PRODUCTS);

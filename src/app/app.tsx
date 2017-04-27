@@ -1,31 +1,41 @@
 import * as React from 'react'
-import initStore from 'app/redux/createStore.ts'
-import Home from 'app/containers/home/index.tsx'
-import Products from 'app/containers/products/index.tsx'
+import Home from 'app/containers/home/home'
+import { Dispatch, State } from 'app/interfaces'
+import { requestProducts } from 'app/containers/products/productsActions'
+import { selectProducts } from 'app/containers/products/productsReducer'
 
-const { Provider } = require('react-redux')
-const { BrowserRouter, Route, Switch } = require('react-router-dom')
+const { connect } = require('react-redux')
+const { BrowserRouter, Route, Link } = require('react-router-dom')
 
+interface AppProps {
+  dispatchRequestProdcuts: Function
+}
 
-export default class App extends React.Component<void, void> {
-
-  store: Object
-
-  constructor(props: any) {
+export class App extends React.Component<AppProps, void> {
+  constructor (props: AppProps) {
     super(props)
-    this.store = initStore()
+  }
+
+  componentDidMount () {
+    this.props.dispatchRequestProdcuts('food')
   }
 
   render () {
     return (
-      <Provider store={this.store}>
-        <BrowserRouter>
-          <Route exact path="/" component={Home}/>
-          <Route exact path='/products' component={Products} />
-        </BrowserRouter>
-
-
-      </Provider>
+      <BrowserRouter>
+        <Route exact path='/' component={Home} />
+      </BrowserRouter>
     )
   }
 }
+
+
+function mapDispatchToProps (dispatch: Dispatch): Object {
+  return {
+    dispatchRequestProdcuts(channel: String) {
+      dispatch(requestProducts(channel))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)

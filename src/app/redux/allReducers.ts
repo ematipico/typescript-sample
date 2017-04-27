@@ -1,7 +1,5 @@
-import products from 'app/containers/products/productsReducer.ts'
+import products from 'app/containers/products/productsReducer'
 
-const allReducers = {
+export default {
   products
 }
-
-export default allReducers
