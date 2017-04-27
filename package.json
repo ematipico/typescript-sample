@@ -12,7 +12,7 @@
     "url": "git+https://github.com/ematipico/typescript-sample.git"
   },
   "keywords": [
-    "Typescript",
+    "TypeScript",
     "Redux",
     "React",
     "Webpack"
