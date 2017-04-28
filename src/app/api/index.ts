@@ -1,18 +1,19 @@
 const BASE_URL = 'https://www.reddit.com/r/'
-
-function request(channel: String) {
-  switch(channel) {
-    case 'food': {
-      return fetch(`${BASE_URL}${channel.toLowerCase()}.json`)
-    }
-    case 'sports': {
-      return fetch(`${BASE_URL}${channel.toLowerCase()}.json`)
-    }
-    default:
-      return fetch(`${BASE_URL}food.json`)
+export const CHANNELS = [
+  'food',
+  'sports',
+  'europe',
+  'television',
+  'jokes'
+]
+function request(channel: string) {
+  if (CHANNELS.indexOf(channel)) {
+    return fetch(`${BASE_URL}${channel.toLowerCase()}.json`)
+  } else {
+    return fetch(`${BASE_URL}food.json`)
   }
 }
 
-export default function api (channel: String) {
+export default function api (channel: string) {
   return request(channel).then(data => data.json());
 }

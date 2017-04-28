@@ -3,6 +3,7 @@ import Home from 'app/containers/home/home'
 import { Dispatch, State } from 'app/interfaces'
 import { requestProducts } from 'app/containers/products/productsActions'
 import { selectProducts } from 'app/containers/products/productsReducer'
+import { CHANNELS } from 'app/api'
 
 const { connect } = require('react-redux')
 const { BrowserRouter, Route, Link } = require('react-router-dom')
@@ -17,7 +18,7 @@ export class App extends React.Component<AppProps, void> {
   }
 
   componentDidMount () {
-    this.props.dispatchRequestProdcuts('food')
+    CHANNELS.forEach(channel => this.props.dispatchRequestProdcuts(channel))
   }
 
   render () {

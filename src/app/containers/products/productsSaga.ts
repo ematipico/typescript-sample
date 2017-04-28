@@ -6,8 +6,10 @@ import { AppAction } from 'app/interfaces'
 import api from 'app/api'
 
 export function* watchRequestProducts (): SagaIterator {
-  const action = yield take(REQUEST_PRODUCTS);
-  yield fork(getProducts, action)
+  while (true) {
+    const action = yield take(REQUEST_PRODUCTS);
+    yield fork(getProducts, action)
+  }
 }
 
 export function* getProducts(action: AppAction): SagaIterator {

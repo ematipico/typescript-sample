@@ -16,7 +16,7 @@ export class Home extends React.Component<HomeProps, void> {
     for (let channel in products) {
       const productsInChannel = products[channel]
       blocks.push(
-        <ChannelPreview products={productsInChannel} key={channel} />
+        <ChannelPreview products={productsInChannel} key={channel} channel={channel} />
       )
     }
     return blocks;
