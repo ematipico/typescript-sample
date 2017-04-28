@@ -1,13 +1,18 @@
+import { UserInformation, UserSettings } from './user'
 import { Store as ReduxStore, Action } from 'redux'
 
 export type Dispatch = (a: AppAction) => void
 
 export interface Product {
-  data: {
+  [key: string]: {
     author: string,
     title: string,
     id: string
   }
+}
+
+export interface Cart {
+  items: Array<Product>
 }
 
 export namespace State {
@@ -15,9 +20,27 @@ export namespace State {
     [key: string]: Array<Product>
   }
 
+  export type User = {
+    settings: UserSettings,
+    information: UserInformation
+  }
+
+  export type UserInformation = {
+
+  }
+
+  export type UserSettings = {
+
+  }
+
+  export type Cart = {
+    items: Array<Product>
+  }
+
   export type All = {
     products: Products,
-    dispatch: Dispatch
+    dispatch: Dispatch,
+    user: User
   }
 }
 
