@@ -4,7 +4,10 @@ import { Product } from 'app/interfaces'
 const { Link } = require('react-router-dom')
 
 interface ChannelPreviewProps {
-  products: Array<Product>,
+  products: {
+    [key: string]: Product
+  },
+  key: any,
   channel: String
 }
 
@@ -13,7 +16,11 @@ export default class ChannelPreview extends React.Component<ChannelPreviewProps,
   onClick: React.EventHandler<React.MouseEvent<HTMLDivElement>>
   constructor (props: ChannelPreviewProps) {
     super(props)
-    this.filteredProps = props.products.slice(0, 5)
+    this.filteredProps = []
+    const idsToTake = Object.keys(props.products).slice(0, 5)
+    idsToTake.forEach(id => {
+      this.filteredProps.push(props.products[id])
+    })
     this.onClick = this._onClick.bind(this)
   }
 
@@ -34,8 +41,8 @@ export default class ChannelPreview extends React.Component<ChannelPreviewProps,
             const data = product.data
             return (
               <div key={data.id} className='preview'>
-              <Link to='/'>
-              {data.title}
+                <Link to={`${channel}/${data.id}`}>
+                {data.title}
               </Link>
               </div>
             )

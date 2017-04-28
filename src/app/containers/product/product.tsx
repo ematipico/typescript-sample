@@ -1,5 +1,5 @@
 import * as React from "react"
-import { selectProducts } from 'app/containers/products/productsReducer'
+import { selectProduct } from 'app/containers/products/productsReducer'
 import { State } from 'app/interfaces'
 import ChannelPreview from 'app/components/ChannelPreview'
 const { connect } = require('react-redux')
@@ -18,6 +18,8 @@ export class Product extends React.Component<ProductProps, void> {
 }
 
 function mapStateToProps (state: State.All, ownProps: any) {
+  const { channel, productId } = ownProps.match.params
+  const product = selectProduct(state, channel, productId)
   return {
 
   }

@@ -17,7 +17,9 @@ export interface Cart {
 
 export namespace State {
   export type Products = {
-    [key: string]: Array<Product>
+    [key: string]: {
+      [key: string]: Product
+    }
   }
 
   export type User = {

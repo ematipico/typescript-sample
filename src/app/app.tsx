@@ -26,9 +26,11 @@ export class App extends React.Component<AppProps, void> {
   render () {
     return (
       <BrowserRouter>
-        <Route exact path='/' component={Home} />
-        <Route path='/:channel' component={Channel} />
-        <Route path='/:channel/:productId' component={Product} />      
+        <div>
+          <Route exact path='/' component={Home} />
+          <Route path='/:channel' component={Channel} />
+          <Route path='/:channel/:productId' component={Product} />      
+        </div>
       </BrowserRouter>
     )
   }
