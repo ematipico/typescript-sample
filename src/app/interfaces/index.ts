@@ -4,11 +4,14 @@ import { Store as ReduxStore, Action } from 'redux'
 export type Dispatch = (a: AppAction) => void
 
 export interface Product {
-  [key: string]: {
+  [key: string]: ProductInfo
+}
+
+export interface ProductInfo {
     author: string,
     title: string,
-    id: string
-  }
+    id: string,
+    selftext: string
 }
 
 export interface Cart {
@@ -23,6 +26,7 @@ export namespace State {
   }
 
   export type User = {
+    loggedIn: boolean
     settings: UserSettings,
     information: UserInformation
   }

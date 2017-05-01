@@ -1,7 +1,9 @@
 import * as React from 'react'
+import Navigation from 'app/components/Navigation'
 import Home from 'app/containers/home/home'
 import Channel from 'app/containers/channel/channel'
 import Product from 'app/containers/product/product'
+import User from 'app/containers/user/user'
 import { Dispatch, State } from 'app/interfaces'
 import { requestProducts } from 'app/containers/products/productsActions'
 import { selectProducts } from 'app/containers/products/productsReducer'
@@ -27,9 +29,11 @@ export class App extends React.Component<AppProps, void> {
     return (
       <BrowserRouter>
         <div>
+          <Navigation />
           <Route exact path='/' component={Home} />
           <Route path='/:channel' component={Channel} />
-          <Route path='/:channel/:productId' component={Product} />      
+          <Route path='/:channel/:productId' component={Product} />
+          <Route path='/sign-in' component={User} />
         </div>
       </BrowserRouter>
     )

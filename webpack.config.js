@@ -9,7 +9,7 @@ module.exports = {
   },
 
   // Enable sourcemaps for debugging webpack's output.
-  devtool: 'source-map',
+  devtool: 'eval',
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
@@ -57,6 +57,7 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };

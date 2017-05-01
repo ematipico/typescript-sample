@@ -1,0 +1,18 @@
+nav {
+  background-color: #7700c9;
+  position: relative;
+  height: 3em;
+  color: var(--white);
+  padding: 0.6em;
+  a {
+    color: var(--white)
+  }
+  .right-hand {
+    position: absolute;
+    right: 1.5em;
+  }
+  .left-hand {
+    position: absolute;
+    left: 1.5em;
+  }
+}

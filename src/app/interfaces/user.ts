@@ -1,5 +1,6 @@
 export interface User {
-  settings: {},
+  loggedIn: boolean
+  settings: UserSettings,
   information: UserInformation
 }
 

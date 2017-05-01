@@ -1,7 +1,13 @@
 
 :root {
   background-color: #ccc;
+  --white: #fff;
+}
+body {
+  margin: 0;
+  padding: 0;
 }
 
 @import 'home.css';
-@import 'components/ChannelPreview.css';
+@import 'components/ChannelPreview';
+@import 'components/Navigation'

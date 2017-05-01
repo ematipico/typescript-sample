@@ -38,11 +38,10 @@ export default class ChannelPreview extends React.Component<ChannelPreviewProps,
         <div className='title' onClick={this.onClick}>{channel}</div>
         <div className='preview'>
           {this.filteredProps.map(product => {
-            const data = product.data
             return (
-              <div key={data.id} className='preview'>
-                <Link to={`${channel}/${data.id}`}>
-                {data.title}
+              <div key={product.id.toString()} className='preview'>
+                <Link to={`${channel}/${product.id}`}>
+                {product.title}
               </Link>
               </div>
             )
