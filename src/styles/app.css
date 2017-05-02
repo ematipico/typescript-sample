@@ -10,4 +10,5 @@ body {
 
 @import 'home.css';
 @import 'components/ChannelPreview';
-@import 'components/Navigation'
+@import 'components/Navigation';
+@import 'components/MyPage';

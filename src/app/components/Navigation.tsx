@@ -20,14 +20,7 @@ export class Navigation extends React.Component<NavigationProps, void> {
           <Link to='/'>Home</Link>
         </div>
         <div className='right-hand'>
-          {(() => {
-            if (!loggedIn) {
-              return <Link to='/sign-in'>Sign in</Link>
-
-            } else {
-              return <Link to='/my-page'>My Page</Link>
-            }
-          })()}
+          <Link to='/my-page'>{!loggedIn ? 'Sign in' : 'My Page'}</Link>
         </div>
       </nav>
     )

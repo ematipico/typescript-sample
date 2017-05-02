@@ -16,5 +16,8 @@ export default function configureStore () {
   )
 
   sagaMiddleware.run(allSagas)
+  if (process.env.NODE_ENV === 'development') {
+    (window as any).store = store
+  }
   return store
 }
