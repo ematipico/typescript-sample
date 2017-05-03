@@ -2,9 +2,15 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:3002',
+    'webpack/hot/only-dev-server',
+    './src/index.tsx'
+  ],
   output: {
     filename: 'dist/bundle.js',
+    publicPath: '/',
     path: __dirname + '/dist'
   },
 
@@ -23,7 +29,7 @@ module.exports = {
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      { test: /\.(tsx|ts)?$/, loader: 'babel-loader!awesome-typescript-loader' },
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
@@ -48,6 +54,11 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    hot: true,
+    publicPath: '/dist',
+    contentBase: path.resolve(__dirname)
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
