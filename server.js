@@ -4,10 +4,10 @@ var config = require('./webpack.config.js')
 var webpack = require('webpack')
 var bundler = webpack(config)
 
+
 module.exports = {
   server: {
-    baseDir: 'src',
-    index: 'index.html'
+    baseDir: 'src'
   },
   middleware: [
     webpackDevMiddleware(bundler, {

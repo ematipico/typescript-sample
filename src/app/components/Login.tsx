@@ -35,7 +35,8 @@ export default class Login extends React.Component<LoginProps, DefaultState> {
   _onSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault()
     evt.stopPropagation()
-    console.log(evt.currentTarget.form)
+    const formData = new FormData(evt.currentTarget)
+    console.log(formData.getAll('email'))
   }
 
   render () {

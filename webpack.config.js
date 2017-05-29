@@ -2,10 +2,16 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: [
+    'babel-polyfill',
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
+    './src/index.tsx'
+  ],
   output: {
-    filename: 'dist/bundle.js',
-    path: __dirname + '/dist'
+    publicPath: '/',
+    filename: './dist/bundle.js',
+    path: '/dist'
   },
 
   // Enable sourcemaps for debugging webpack's output.
@@ -23,7 +29,7 @@ module.exports = {
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      { test: /\.(ts|tsx)?$/, loader: 'awesome-typescript-loader' },
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
