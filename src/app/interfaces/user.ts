@@ -9,9 +9,11 @@ export interface UserInformation {
   lastName: string,
   age: number,
   description: string,
-  email: string
+  email: string,
+  [key: string]: string|number|boolean
 }
 
 export interface UserSettings {
-  receiveNotification: boolean
+  receiveNotification: boolean,
+  [key: string]: string|number|boolean
 }

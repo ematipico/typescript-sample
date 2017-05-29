@@ -1,11 +1,13 @@
 import { AppAction } from 'app/interfaces'
+import { UserInformation, UserSettings } from 'app/interfaces/user'
 
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS'
 export const UPDATE_INFORMATION = 'UPDATE_INFORMATION'
 export const LOGGED_STATE = 'LOGGED_STATE'
 export const ATTEMPT_LOGIN = 'ATTEMPT_LOGIN'
+export const SUCCESS_LOGIN = 'SUCCESS_LOGIN'
 
-export function updateUserSettings (newSettings: Object): AppAction {
+export function updateUserSettings (newSettings: UserSettings): AppAction {
   return {
     type: UPDATE_SETTINGS,
     payload: {
@@ -14,7 +16,7 @@ export function updateUserSettings (newSettings: Object): AppAction {
   }
 }
 
-export function updateUserInformation (newInformation: Object): AppAction {
+export function updateUserInformation (newInformation: UserInformation): AppAction {
   return {
     type: UPDATE_INFORMATION,
     payload: {
@@ -25,9 +27,18 @@ export function updateUserInformation (newInformation: Object): AppAction {
 
 export function attemptLogin (formInfo: Object): AppAction {
   return {
-    type: UPDATE_INFORMATION,
+    type: ATTEMPT_LOGIN,
     payload: {
       formInfo
+    }
+  }
+}
+
+export function successLogin (userInfo: Object): AppAction {
+  return {
+    type: SUCCESS_LOGIN,
+    payload: {
+      userInfo
     }
   }
 }

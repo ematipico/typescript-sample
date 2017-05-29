@@ -33,7 +33,7 @@ export class App extends React.Component<AppProps, void> {
           <Route exact path='/' component={Home} />
           <Route path='/:channel' component={Channel} />
           <Route path='/:channel/:productId' component={Product} />
-          <Route path='/sign-in' component={User} />
+          <Route path='/my-page' component={User} />
         </div>
       </BrowserRouter>
     )

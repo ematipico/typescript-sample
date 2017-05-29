@@ -1,0 +1,16 @@
+.my-page {
+  .information {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+
+    .name {
+      grid-column: 1 / 2;
+    }
+    .value {
+      grid-column: 2 / 3;
+    }
+    .newValue {
+      grid-column: 3 / 5;
+    }
+  }
+}
