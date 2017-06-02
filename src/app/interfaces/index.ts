@@ -1,59 +1,46 @@
-import { UserInformation, UserSettings } from './user'
+import { IIUserInformation, IIUserSettings } from './user'
 import { Store as ReduxStore, Action } from 'redux'
 
-export type Dispatch = (a: AppAction) => void
+export type Dispatch = (a: IAppAction) => void
 
-export interface Product {
-  [key: string]: ProductInfo
+export interface IState {
+  products: {
+    [key: string]: {
+      [key: string]: IProduct
+    }
+  }
+
+  user: {
+    loggedIn: boolean
+    settings: IIUserSettings,
+    information: IIUserInformation
+  }
+
+  cart: {
+    items: IProduct[]
+  }
+
 }
 
-export interface ProductInfo {
+export interface IProduct {
+  [key: string]: IProductInfo
+}
+
+export interface IProductInfo {
     author: string,
     title: string,
     id: string,
     selftext: string
 }
 
-export interface Cart {
-  items: Array<Product>
+export interface ICart {
+  items: IProduct[]
 }
 
-export namespace State {
-  export type Products = {
-    [key: string]: {
-      [key: string]: Product
-    }
-  }
-
-  export type User = {
-    loggedIn: boolean
-    settings: UserSettings,
-    information: UserInformation
-  }
-
-  export type UserInformation = {
-
-  }
-
-  export type UserSettings = {
-
-  }
-
-  export type Cart = {
-    items: Array<Product>
-  }
-
-  export type All = {
-    products: Products,
-    dispatch: Dispatch,
-    user: User
-  }
-}
-
-export interface AppAction extends Action {
+export interface IAppAction extends Action {
   payload: any
 }
 
-export interface Store extends ReduxStore<State.All> {
+export interface IStore extends IState {
   dispatch: Dispatch
 }

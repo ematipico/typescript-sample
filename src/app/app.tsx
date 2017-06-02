@@ -4,7 +4,7 @@ import Home from 'app/containers/home/home'
 import Channel from 'app/containers/channel/channel'
 import Product from 'app/containers/product/product'
 import User from 'app/containers/user/user'
-import { Dispatch, State } from 'app/interfaces'
+import { Dispatch, IState } from 'app/interfaces'
 import { requestProducts } from 'app/containers/products/productsActions'
 import { selectProducts } from 'app/containers/products/productsReducer'
 import { CHANNELS } from 'app/api'
@@ -12,25 +12,25 @@ import { CHANNELS } from 'app/api'
 const { connect } = require('react-redux')
 const { BrowserRouter, Route, Link } = require('react-router-dom')
 
-interface AppProps {
-  dispatchRequestProdcuts: Function
+interface IAppProps {
+  dispatchRequestProdcuts: (channel: string) => void
 }
 
-export class App extends React.Component<AppProps, void> {
-  constructor (props: AppProps) {
+export class App extends React.Component<IAppProps, void> {
+  constructor (props: IAppProps) {
     super(props)
   }
 
-  componentDidMount () {
+  public componentDidMount () {
     CHANNELS.forEach(channel => this.props.dispatchRequestProdcuts(channel))
   }
 
-  render () {
+  public render () {
     return (
       <BrowserRouter>
         <div>
           <Navigation />
-          <Route exact path='/' component={Home} />
+          <Route exact={true} path='/' component={Home} />
           <Route path='/:channel' component={Channel} />
           <Route path='/:channel/:productId' component={Product} />
           <Route path='/my-page' component={User} />
@@ -40,10 +40,9 @@ export class App extends React.Component<AppProps, void> {
   }
 }
 
-
-function mapDispatchToProps (dispatch: Dispatch): Object {
+function mapDispatchToProps (dispatch: Dispatch): object {
   return {
-    dispatchRequestProdcuts(channel: String) {
+    dispatchRequestProdcuts(channel: string) {
       dispatch(requestProducts(channel))
     }
   }

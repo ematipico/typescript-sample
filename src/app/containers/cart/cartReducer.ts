@@ -1,20 +1,20 @@
 import { Reducer } from 'redux'
-import { State, AppAction, Cart } from 'app/interfaces'
+import { IState, IProduct, IAppAction, ICart } from 'app/interfaces'
 import { ADD_ITEM, REMOVE_ITEM, FLUSH_CART } from './cartActions'
 
-const initialState = {
+const initialState: ICart = {
   items: []
-} as Cart
+}
 
-export function selectInformation (state: State.All) {
+export function selectInformation (state: IState) {
   return state.products
 }
 
-export function selectSettings (state: State.All) {
+export function selectSettings (state: IState) {
   return state.user.settings
 }
 
-export default function userReducer<Reducer> (state: State.Cart = initialState, action: AppAction): State.Cart {
+export default function userReducer<Reducer> (state: ICart = initialState, action: IAppAction): ICart {
   switch (action.type) {
     case ADD_ITEM: {
       const { payload } = action

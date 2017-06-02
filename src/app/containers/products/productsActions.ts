@@ -1,9 +1,9 @@
-import { AppAction } from 'app/interfaces'
+import { IAppAction } from 'app/interfaces'
 
 export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
 export const STORE_PRODUCTS = 'STORE_PRODUCTS'
 
-export const requestProducts = (channel: String): AppAction => {
+export const requestProducts = (channel: string): IAppAction => {
   return {
     type: REQUEST_PRODUCTS,
     payload: {
@@ -12,7 +12,7 @@ export const requestProducts = (channel: String): AppAction => {
   }
 }
 
-export const storeProducts = (products: Object, channel: String): AppAction => {
+export const storeProducts = (products: object, channel: string): IAppAction => {
   return {
     type: STORE_PRODUCTS,
     payload: {

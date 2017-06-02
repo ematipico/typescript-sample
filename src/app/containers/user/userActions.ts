@@ -1,5 +1,5 @@
-import { AppAction } from 'app/interfaces'
-import { UserInformation, UserSettings } from 'app/interfaces/user'
+import { IAppAction } from 'app/interfaces'
+import { IUserInformation, IUserSettings } from 'app/interfaces/user'
 
 export const UPDATE_SETTINGS = 'UPDATE_SETTINGS'
 export const UPDATE_INFORMATION = 'UPDATE_INFORMATION'
@@ -7,7 +7,7 @@ export const LOGGED_STATE = 'LOGGED_STATE'
 export const ATTEMPT_LOGIN = 'ATTEMPT_LOGIN'
 export const SUCCESS_LOGIN = 'SUCCESS_LOGIN'
 
-export function updateUserSettings (newSettings: UserSettings): AppAction {
+export function updateIUserSettings (newSettings: IUserSettings): IAppAction {
   return {
     type: UPDATE_SETTINGS,
     payload: {
@@ -16,7 +16,7 @@ export function updateUserSettings (newSettings: UserSettings): AppAction {
   }
 }
 
-export function updateUserInformation (newInformation: UserInformation): AppAction {
+export function updateIUserInformation (newInformation: IUserInformation): IAppAction {
   return {
     type: UPDATE_INFORMATION,
     payload: {
@@ -25,7 +25,7 @@ export function updateUserInformation (newInformation: UserInformation): AppActi
   }
 }
 
-export function attemptLogin (formInfo: Object): AppAction {
+export function attemptLogin (formInfo: object): IAppAction {
   return {
     type: ATTEMPT_LOGIN,
     payload: {
@@ -34,7 +34,7 @@ export function attemptLogin (formInfo: Object): AppAction {
   }
 }
 
-export function successLogin (userInfo: Object): AppAction {
+export function successLogin (userInfo: object): IAppAction {
   return {
     type: SUCCESS_LOGIN,
     payload: {
@@ -43,7 +43,7 @@ export function successLogin (userInfo: Object): AppAction {
   }
 }
 
-export function loggedState (theState: boolean): AppAction {
+export function loggedState (theState: boolean): IAppAction {
   return {
     type: LOGGED_STATE,
     payload: {

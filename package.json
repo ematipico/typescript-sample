@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development browser-sync start -c server.js",
-    "test": "test"
+    "test": "test",
+    "tsinit": "tslint --init"
   },
   "repository": {
     "type": "git",
@@ -56,7 +57,11 @@
     "postcss-loader": "^1.3.3",
     "react-hot-loader": "^3.0.0-beta.6",
     "source-map-loader": "^0.2.1",
+    "tslint": "^5.4.2",
+    "tslint-loader": "^3.5.3",
+    "tslint-react": "^3.0.0",
     "typescript": "^2.3.1",
+    "typescript-eslint-parser": "^3.0.0",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^2.4.5",
     "webpack-hot-middleware": "^2.18.0"

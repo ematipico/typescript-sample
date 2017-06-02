@@ -1,13 +1,13 @@
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config.js')
-var webpack = require('webpack')
-var bundler = webpack(config)
-
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const config = require('./webpack.config.js')
+const webpack = require('webpack')
+const bundler = webpack(config)
 
 module.exports = {
   server: {
-    baseDir: 'src'
+    baseDir: 'src',
+    index: 'index.html'
   },
   middleware: [
     webpackDevMiddleware(bundler, {
@@ -21,7 +21,9 @@ module.exports = {
     webpackHotMiddleware(bundler)
   ],
   files: [
-    'src/index.html'
+    '../js/**/*.js',
+    '../css/app.css',
+    '../**/*.html'
   ],
   online: false,
   ghostMode: true,

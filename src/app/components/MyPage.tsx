@@ -1,32 +1,34 @@
 
 import * as React from 'react'
-import { UserSettings, UserInformation } from 'app/interfaces/user'
+import { IUserSettings, IUserInformation } from 'app/interfaces/user'
 
-interface MyPageProps {
-  information: UserInformation,
-  settings: UserSettings
+interface IMyPageProps {
+  information: IUserInformation,
+  settings: IUserSettings
 }
 
-export default class MyPage extends React.Component<MyPageProps, void> {
+export default class MyPage extends React.Component<IMyPageProps, void> {
 
-  _renderSettings (info: UserSettings|UserInformation) {
+  private _renderSettings (info: IUserSettings|IUserInformation) {
 
     const view = []
-    for (let settingName in info) {
-      const value = info[settingName]
-      view.push(<span key={settingName} className='name'>{settingName}</span>)
-      view.push(<span key={value.toString()} className='value'>{value}</span>)
-      view.push(
-        <div key={settingName + '-' + value.toString()} className='newValue'>
-          <label htmlFor={settingName}>New value</label>
-          <input name={settingName} type='text' id={settingName} />
-        </div>
-      )
+    for (const settingName in info) {
+      if (info.hasOwnProperty(settingName)) {
+        const value = info[settingName]
+        view.push(<span key={settingName} className='name'>{settingName}</span>)
+        view.push(<span key={value.toString()} className='value'>{value}</span>)
+        view.push(
+          <div key={settingName + '-' + value.toString()} className='newValue'>
+            <label htmlFor={settingName}>New value</label>
+            <input name={settingName} type='text' id={settingName} />
+          </div>
+        )
+      }
     }
     return view
   }
 
-  render () {
+  public render () {
     const { information, settings } = this.props
     return (
       <div className='my-page'>

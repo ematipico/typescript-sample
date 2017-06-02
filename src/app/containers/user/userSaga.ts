@@ -1,10 +1,10 @@
 
 import { SagaIterator } from 'redux-saga'
 import { take, fork, put, call } from 'redux-saga/effects'
-import { ATTEMPT_LOGIN, loggedState, updateUserInformation, updateUserSettings } from 'app/containers/user/userActions'
-import { AppAction } from 'app/interfaces'
+import { ATTEMPT_LOGIN, loggedState, updateIUserInformation, updateIUserSettings } from 'app/containers/user/userActions'
+import { IAppAction } from 'app/interfaces'
 import api from 'app/api'
-import { UserInformation, UserSettings } from 'app/interfaces/user'
+import { IUserInformation, IUserSettings } from 'app/interfaces/user'
 
 export function* watchAttemptLogin (): SagaIterator {
   while (true) {
@@ -13,23 +13,23 @@ export function* watchAttemptLogin (): SagaIterator {
   }
 }
 
-export function* fetchUser(action: AppAction): SagaIterator {
-  const { payload }: AppAction = action
+export function* fetchUser(action: IAppAction): SagaIterator {
+  const { payload }: IAppAction = action
   const { email, password} = payload.formInfo
   if (email === 'ema@all.com' && password === 'ema') {
     yield put(loggedState(true))
-    const information = {
-      firstName: 'Myname',
-      lastName: 'Lastname',
+    const information: IUserInformation = {
       age: 999,
       description: 'I am a good person',
-      email
-    } as UserInformation
-    const settings = {
+      email,
+      firstName: 'Myname',
+      lastName: 'Lastname',
+    }
+    const settings: IUserSettings = {
       receiveNotification: true
-    } as UserSettings
-    yield put(updateUserInformation(information))
-    yield put(updateUserSettings(settings))
+    }
+    yield put(updateIUserInformation(information))
+    yield put(updateIUserSettings(settings))
   } else {
     throw new Error('invalid login')
   }

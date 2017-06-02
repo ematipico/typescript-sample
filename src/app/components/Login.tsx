@@ -48,10 +48,10 @@ export default class Login extends React.Component<LoginProps, DefaultState> {
       <div className='login-form'>
         <form onSubmit={this.onSubmit}>
           <fieldset>
-            <label htmlFor='email'>Email: </label>
-            <input id='email' type='text' value={email} onChange={this.onChange} name='email'/>
-            <label htmlFor='password'>Password: </label>
-            <input type='password' name='password' id='password' value={password} onChange={this.onChange} />
+            <label htmlFor='email'>Email (use 'ema@all.com'): </label>
+            <input id='email' type='text' value={email} onChange={this.onChange} name='email' placeholder='Use "ema@all.com"'/>
+            <label htmlFor='password'>Password (use 'ema'): </label>
+            <input type='password' name='password' id='password' value={password} onChange={this.onChange} placeholder='Use "ema"' />
 
           </fieldset>
           <button type='submit'>Log in</button>

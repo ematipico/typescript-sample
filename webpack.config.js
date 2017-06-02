@@ -1,18 +1,23 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   entry: [
+    'babel-polyfill',
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3002',
-    'webpack/hot/only-dev-server',
     './src/index.tsx'
   ],
   output: {
-    filename: 'dist/bundle.js',
+    filename: 'bundle.js',
     publicPath: '/',
-    path: __dirname + '/dist'
+    path: path.resolve('./'),
+    pathinfo: true
   },
+  watch: true,
+  cache: false,
+  target: 'web',
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: 'eval',
@@ -31,6 +36,12 @@ module.exports = {
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       { test: /\.(tsx|ts)?$/, loader: 'babel-loader!awesome-typescript-loader' },
 
+      {
+        test: /\.(tsx|ts)?$/,
+        exclude: /node_modules/,
+        loader: 'tslint-loader'
+      },
+
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
 
@@ -39,7 +50,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader',
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
@@ -55,11 +66,6 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    hot: true,
-    publicPath: '/dist',
-    contentBase: path.resolve(__dirname)
-  },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -67,8 +73,11 @@ module.exports = {
       'process.env.NODE_ENV': '"development"'
     }),
     new webpack.ProvidePlugin({
-      'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      debug: true
+    })
   ]
 };

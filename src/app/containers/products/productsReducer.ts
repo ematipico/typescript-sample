@@ -1,16 +1,16 @@
 import { Reducer } from 'redux'
-import { State, AppAction } from 'app/interfaces'
+import { IState, IAppAction, IProduct } from 'app/interfaces'
 import { STORE_PRODUCTS } from './productsActions'
 
-export function selectProducts (state: State.All) {
+export function selectProducts (state: IState) {
   return state.products
 }
 
-export function selectProduct (state: State.All, channel: string, productId: string) {
+export function selectProduct (state: IState, channel: string, productId: string) {
   return state.products[channel][productId]
 }
 
-export default function productsReducer<Reducer> (state: State.Products = {}, action: AppAction): State.Products {
+export default function productsReducer<Reducer> (state: IProduct[] = [], action: IAppAction): object {
   switch (action.type) {
     case STORE_PRODUCTS: {
       const { products, channel } = action.payload
@@ -24,9 +24,9 @@ export default function productsReducer<Reducer> (state: State.Products = {}, ac
   }
 }
 
-function normalizeProducts (products: Array<any>): Object {
+function normalizeProducts (products: any[]): object {
   const newProducts: {
-    [key: string]: Object
+    [key: string]: object
   } = {}
   products.forEach(product => {
     const id: string = product.data.id

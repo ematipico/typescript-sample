@@ -1,11 +1,11 @@
-import { AppAction, Product } from 'app/interfaces'
+import { IAppAction, Product } from 'app/interfaces'
 import { Action } from 'redux'
 
 export const ADD_ITEM = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const FLUSH_CART = 'FLUSH_CART'
 
-export function addItem (item: Product): AppAction {
+export function addItem (item: Product): IAppAction {
   return {
     type: ADD_ITEM,
     payload: {
@@ -14,7 +14,7 @@ export function addItem (item: Product): AppAction {
   }
 }
 
-export function removeItem (id: string): AppAction {
+export function removeItem (id: string): IAppAction {
   return {
     type: REMOVE_ITEM,
     payload: {

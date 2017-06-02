@@ -1,10 +1,10 @@
-export interface User {
+export interface IUser {
   loggedIn: boolean
-  settings: UserSettings,
-  information: UserInformation
+  settings: IUserSettings,
+  information: IUserInformation
 }
 
-export interface UserInformation {
+export interface IUserInformation {
   firstName: string,
   lastName: string,
   age: number,
@@ -13,7 +13,7 @@ export interface UserInformation {
   [key: string]: string|number|boolean
 }
 
-export interface UserSettings {
+export interface IUserSettings {
   receiveNotification: boolean,
   [key: string]: string|number|boolean
 }

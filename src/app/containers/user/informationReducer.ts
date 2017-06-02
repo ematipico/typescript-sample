@@ -1,11 +1,17 @@
 import { Reducer } from 'redux'
-import { State, AppAction } from 'app/interfaces'
-import { UserInformation } from 'app/interfaces/user'
+import { IState, IAppAction } from 'app/interfaces'
+import { IUserInformation } from 'app/interfaces/user'
 import { UPDATE_INFORMATION } from './userActions'
 
-const initialState = {} as UserInformation
+const initialState: IUserInformation = {
+  age: 999,
+  description: 'I am a good person',
+  email: '',
+  firstName: 'Myname',
+  lastName: 'Lastname',
+}
 
-export default function informationReducer<Reducer> (state: State.UserInformation = initialState, action: AppAction): State.UserInformation {
+export default function informationReducer<Reducer> (state: IUserInformation = initialState, action: IAppAction): IUserInformation {
   switch (action.type) {
     case UPDATE_INFORMATION: {
       return {
