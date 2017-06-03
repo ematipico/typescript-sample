@@ -3,7 +3,7 @@ import { IState, IAppAction } from 'app/interfaces'
 import { IUserInformation } from 'app/interfaces/user'
 import { UPDATE_INFORMATION } from './userActions'
 
-const initialState: IUserInformation = {
+export const initialState: IUserInformation = {
   age: 999,
   description: 'I am a good person',
   email: '',

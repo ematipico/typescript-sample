@@ -5,11 +5,11 @@ export interface IUser {
 }
 
 export interface IUserInformation {
-  firstName: string,
-  lastName: string,
-  age: number,
-  description: string,
-  email: string,
+  firstName?: string,
+  lastName?: string,
+  age?: number,
+  description?: string,
+  email?: string,
   [key: string]: string|number|boolean
 }
 
