@@ -1,11 +1,11 @@
-import { IAppAction, Product } from 'app/interfaces'
+import { IAppAction, IProduct } from 'app/interfaces'
 import { Action } from 'redux'
 
 export const ADD_ITEM = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const FLUSH_CART = 'FLUSH_CART'
 
-export function addItem (item: Product): IAppAction {
+export function addItem (item: IProduct): IAppAction {
   return {
     type: ADD_ITEM,
     payload: {

@@ -1,28 +1,30 @@
-import * as React from "react"
+import * as React from 'react'
 import { selectProducts } from 'app/containers/products/productsReducer'
-import { State } from 'app/interfaces'
+import { IState, IProduct, IProducts, IChannel } from 'app/interfaces'
 import ChannelPreview from 'app/components/ChannelPreview'
 
 const { connect } = require('react-redux')
 
-interface HomeProps {
-  products: State.Products
+interface IHomeProps {
+  products: IProducts
 }
 
-export class Home extends React.Component<HomeProps, void> {
+export class Home extends React.Component<IHomeProps, void> {
 
-  renderProductsByChannel (products: State.Products) {
-    const blocks = []
-    for (let channel in products) {
-      const productsInChannel = products[channel]
-      blocks.push(
-        <ChannelPreview products={productsInChannel} key={channel} channel={channel} />
-      )
+  private renderProductsByChannel (products: IProducts): JSX.Element[] {
+    const blocks: JSX.Element[] = []
+    for (const channelName in products) {
+      if (products.hasOwnProperty(channelName)) {
+        const productsInChannel = products[channelName]
+        blocks.push(
+          <ChannelPreview productsInChannel={productsInChannel} key={channelName} channelName={channelName} />
+        )
+      }
     }
     return blocks;
   }
 
-  render () {
+  public render (): JSX.Element {
     const { products } = this.props
     return (
       <div className='container'>
@@ -36,8 +38,7 @@ export class Home extends React.Component<HomeProps, void> {
   }
 }
 
-function mapStateToProps (state: State.All, ownProps: HomeProps): Object {
-
+function mapStateToProps (state: IState, ownProps: IHomeProps): object {
   return {
     products: selectProducts(state)
   }

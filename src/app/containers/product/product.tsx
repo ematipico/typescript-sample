@@ -1,16 +1,15 @@
-import * as React from "react"
+import * as React from 'react'
 import { selectProduct } from 'app/containers/products/productsReducer'
-import { State, ProductInfo } from 'app/interfaces'
+import { IState, IProductInfo } from 'app/interfaces'
 import ChannelPreview from 'app/components/ChannelPreview'
 const { connect } = require('react-redux')
 
-interface ProductProps {
-  product: ProductInfo
+interface IProductProps {
+  product: IProductInfo
 }
 
-export class Product extends React.Component<ProductProps, void> {
-
-  render () {
+export class Product extends React.Component<IProductProps, void> {
+  public render (): JSX.Element {
     const { product } = this.props
     return (
       <div className='container product'>
@@ -22,7 +21,7 @@ export class Product extends React.Component<ProductProps, void> {
   }
 }
 
-function mapStateToProps (state: State.All, ownProps: any) {
+function mapStateToProps (state: IState, ownProps: any) {
   const { channel, productId } = ownProps.match.params
   const product = selectProduct(state, channel, productId)
   return {

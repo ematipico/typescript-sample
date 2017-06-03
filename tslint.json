@@ -19,8 +19,9 @@
       "jsx-no-multiline-js": false,
       "member-ordering": [false],
 
-      "object-literal-sort-keys": false
-
+      "object-literal-sort-keys": false,
+      "no-console": [false, "log", "error"],
+      "jsx-no-lambda": false
     },
     "rulesDirectory": []
 }

@@ -1,18 +1,18 @@
-import * as React from "react"
+import * as React from 'react'
 
-interface LoginProps {
-  onLogin: Function
+interface ILoginProps {
+  onLogin: ({}) => void
 }
 
-interface DefaultState {
+interface IDefaultState {
   email: string,
   password: string
 }
 
-export default class Login extends React.Component<LoginProps, DefaultState> {
-  onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>>
-  onSubmit: React.EventHandler<React.FormEvent<HTMLFormElement>>
-  constructor(props: LoginProps) {
+export default class Login extends React.Component<ILoginProps, IDefaultState> {
+  private onChange: React.EventHandler<React.ChangeEvent<HTMLInputElement>>
+  private onSubmit: React.EventHandler<React.FormEvent<HTMLFormElement>>
+  constructor(props: ILoginProps) {
     super(props)
     this.onChange = this._onChange.bind(this)
     this.onSubmit = this._onSubmit.bind(this)
@@ -22,7 +22,7 @@ export default class Login extends React.Component<LoginProps, DefaultState> {
     }
   }
 
-  _onChange(evt: React.FormEvent<HTMLInputElement>) {
+  private _onChange(evt: React.FormEvent<HTMLInputElement>) {
     const newValue = evt.currentTarget.value
     const name = evt.currentTarget.name
     this.setState((prevState, props) => {
@@ -32,17 +32,19 @@ export default class Login extends React.Component<LoginProps, DefaultState> {
     })
   }
 
-  _onSubmit(evt: React.FormEvent<HTMLFormElement>) {
+  private _onSubmit(evt: React.FormEvent<HTMLFormElement>) {
     const { onLogin } = this.props
     evt.preventDefault()
     evt.stopPropagation()
     const form = new FormData(evt.currentTarget)
     const email = form.get('email')
     const password = form.get('password')
-    onLogin && onLogin({email, password})
+    if (onLogin) {
+      onLogin({email, password})
+    }
   }
 
-  render () {
+  public render (): JSX.Element {
     const { email, password } = this.state
     return (
       <div className='login-form'>

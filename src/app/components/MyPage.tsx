@@ -28,7 +28,7 @@ export default class MyPage extends React.Component<IMyPageProps, void> {
     return view
   }
 
-  public render () {
+  public render (): JSX.Element {
     const { information, settings } = this.props
     return (
       <div className='my-page'>

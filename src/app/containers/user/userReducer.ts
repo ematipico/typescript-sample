@@ -13,7 +13,7 @@ export function selectSettings (state: IState): IUserSettings {
   return state.user.settings
 }
 
-export function userLoggedIState (state: IState): boolean {
+export function userLoggedState (state: IState): boolean {
   return state.user.loggedIn
 }
 

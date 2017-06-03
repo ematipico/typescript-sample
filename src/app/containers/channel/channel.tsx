@@ -1,25 +1,52 @@
-import * as React from "react"
-import { selectProducts } from 'app/containers/products/productsReducer'
-import { State } from 'app/interfaces'
+import * as React from 'react'
+import { selectProductsFromChannel } from 'app/containers/products/productsReducer'
+import { IState, IChannel } from 'app/interfaces'
 import ChannelPreview from 'app/components/ChannelPreview'
+import { RouteProps } from 'react-router'
+import Product from 'app/containers/product/product'
+
 const { connect } = require('react-redux')
+const { Link, Route, Match } = require('react-router-dom')
 
-interface ChannelProps {
-
+interface IChannelProps extends RouteProps {
+  channel: string,
+  products: IChannel,
+  match: {
+    url: string
+  }
 }
 
-export class Channel extends React.Component<ChannelProps, void> {
+export class Channel extends React.Component<IChannelProps, void> {
 
-  render () {
+  public render (): JSX.Element {
+    const { channel, products, match } = this.props
     return (
-      <div></div>
+      <div>
+        <h1>Channel {channel}</h1>
+        <ul>
+        {Object.keys(products).map((id) => {
+          const product = products[id]
+          return (
+            <li key={id}>
+              <span>{product.title}</span>
+              <span>
+                <Link to={`/products/${channel}/${id}`}> More details</Link>
+              </span>
+            </li>
+          )
+        })}
+        </ul>
+      </div>
     )
   }
 }
 
-function mapStateToProps (state: State.All, ownProps: any) {
+function mapStateToProps (state: IState, ownProps: any): object {
+  const { channel } = ownProps.match.params
+  const products = selectProductsFromChannel(state, channel)
   return {
-
+    products,
+    channel
   }
 }
 

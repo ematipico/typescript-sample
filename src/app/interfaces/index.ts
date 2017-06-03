@@ -1,29 +1,34 @@
-import { IIUserInformation, IIUserSettings } from './user'
+import { IUserInformation, IUserSettings } from './user'
 import { Store as ReduxStore, Action } from 'redux'
 
 export type Dispatch = (a: IAppAction) => void
 
 export interface IState {
   products: {
-    [key: string]: {
-      [key: string]: IProduct
-    }
+    [channel: string]: IChannel
   }
 
   user: {
     loggedIn: boolean
-    settings: IIUserSettings,
-    information: IIUserInformation
+    settings: IUserSettings,
+    information: IUserInformation
   }
 
   cart: {
     items: IProduct[]
   }
-
 }
 
 export interface IProduct {
   [key: string]: IProductInfo
+}
+
+export interface IProducts {
+  [channel: string]: IChannel
+}
+
+export interface IChannel {
+  [id: string]: IProduct
 }
 
 export interface IProductInfo {

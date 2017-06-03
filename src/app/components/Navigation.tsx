@@ -1,18 +1,17 @@
-import * as React from "react"
-import { State } from 'app/interfaces'
+import * as React from 'react'
+import { IState } from 'app/interfaces'
 import { userLoggedState } from 'app/containers/user/userReducer'
 import _isEmpty from 'lodash/isEmpty'
 const { connect } = require('react-redux')
 const { Link } = require('react-router-dom')
 
-
-interface NavigationProps {
+interface INavigationProps {
   loggedIn: boolean
 }
 
-export class Navigation extends React.Component<NavigationProps, void> {
+export class Navigation extends React.Component<INavigationProps, void> {
 
-  render () {
+  public render (): JSX.Element {
     const { loggedIn } = this.props
     return (
       <nav className='navbar'>
@@ -20,14 +19,14 @@ export class Navigation extends React.Component<NavigationProps, void> {
           <Link to='/'>Home</Link>
         </div>
         <div className='right-hand'>
-          <Link to='/my-page'>{!loggedIn ? 'Sign in' : 'My Page'}</Link>
+          <Link to='/mypage'>{!loggedIn ? 'Sign in' : 'My Page'}</Link>
         </div>
       </nav>
     )
   }
 }
 
-function mapDispatchToProps (state: State.All, ownProps: Object) {
+function mapDispatchToProps (state: IState, ownProps: object) {
   const loggedIn = userLoggedState(state)
   return {
     loggedIn

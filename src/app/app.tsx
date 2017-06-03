@@ -2,8 +2,8 @@ import * as React from 'react'
 import Navigation from 'app/components/Navigation'
 import Home from 'app/containers/home/home'
 import Channel from 'app/containers/channel/channel'
-import Product from 'app/containers/product/product'
 import User from 'app/containers/user/user'
+import Product from 'app/containers/product/product'
 import { Dispatch, IState } from 'app/interfaces'
 import { requestProducts } from 'app/containers/products/productsActions'
 import { selectProducts } from 'app/containers/products/productsReducer'
@@ -31,9 +31,9 @@ export class App extends React.Component<IAppProps, void> {
         <div>
           <Navigation />
           <Route exact={true} path='/' component={Home} />
-          <Route path='/:channel' component={Channel} />
-          <Route path='/:channel/:productId' component={Product} />
-          <Route path='/my-page' component={User} />
+          <Route exact={true} path='/products/:channel' component={Channel} />
+          <Route exact={true} path='/products/:channel/:productId' component={Product} />
+          <Route exact={true} path='/mypage' component={User} />
         </div>
       </BrowserRouter>
     )

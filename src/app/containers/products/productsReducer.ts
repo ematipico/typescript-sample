@@ -1,9 +1,13 @@
 import { Reducer } from 'redux'
-import { IState, IAppAction, IProduct } from 'app/interfaces'
+import { IState, IAppAction, IProduct, IChannel } from 'app/interfaces'
 import { STORE_PRODUCTS } from './productsActions'
 
 export function selectProducts (state: IState) {
   return state.products
+}
+
+export function selectProductsFromChannel (state: IState, channel: string): IChannel {
+  return state.products[channel]
 }
 
 export function selectProduct (state: IState, channel: string, productId: string) {
