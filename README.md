@@ -9,13 +9,13 @@ The application simulates a listing of products divided by categories and after 
 ## Libraries used
 
 In order to create this project, I used some libraries that I usually use to startup a project like this:
-- `redux` as state management library
-- `redux-saga` to handle asynchronous operations when an action is dispatched  
-- `awesome-typescript-loader` to transpile TypeScript code
-- `ava` for the test suite
-- `postcss-loader` for using CSS4 features (as you can see there is not SASS or LESS)
-- `webpack` (obviously) to bundle the code
-- `tslint` for coding style and rules
+- [`redux`](http://redux.js.org/) as state management library
+- [`redux-saga`](https://redux-saga.js.org/) to handle asynchronous operations when an action is dispatched  
+- [`awesome-typescript-loader`](https://github.com/s-panferov/awesome-typescript-loader) to transpile TypeScript code
+- [`ava`](https://github.com/avajs/ava) for the test suite
+- [`postcss`](http://postcss.org/) for using CSS4 features (as you can see there is not SASS or LESS)
+- [`webpack`](https://webpack.js.org/) (obviously) to bundle the code
+- [`tslint`](https://palantir.github.io/tslint/) for coding style and rules
 
 ## How to
 
