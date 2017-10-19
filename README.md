@@ -2,6 +2,8 @@
 
 This a sample repository on how to use TypeScript with Redux, React and Webpack.
 
+<img src="https://david-dm.org/ematipico/typescript-sample.svg"/>
+
 The application simulates a listing of products divided by categories and after that it allows you to show every detail of the product. It's possible to sign in to have access to the personal page using a login.
 
 ... personal cart coming soon ...
